@@ -78,7 +78,8 @@
               "buildTarget": "contable-web:build:production"
             },
             "development": {
-              "buildTarget": "contable-web:build:development"
+              "buildTarget": "contable-web:build:development",
+              "port": 4060
             }
           },
           "defaultConfiguration": "development"
