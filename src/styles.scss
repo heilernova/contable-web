@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --app-layout-header-border-button: hsl(215, 15%, 92%);
+    --app-layout-aside-background-color: hsl(214, 47%, 97%);
+    --app-layout-footer-background-color:#0D1924;
+    --app-layout-footer-color:white;
+
+    --app-header-border-bottom: 1px solid hsl(215, 15%, 92%);
+}

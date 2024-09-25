@@ -1,0 +1,13 @@
+.session-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    line-height: 1em;
+    cursor: pointer;
+    .company {
+        font-weight: 500;
+    }
+    .user {
+        font-size: 12px;
+    }
+}

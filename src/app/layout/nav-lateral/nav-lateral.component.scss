@@ -1,0 +1,30 @@
+:host {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    li {
+        padding: .5em;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(105, 155, 199)
+        }
+    }
+}
+
+.item {
+    display: flex;
+    .icon {
+        width: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

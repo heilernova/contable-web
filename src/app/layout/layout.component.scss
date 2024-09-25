@@ -1,0 +1,34 @@
+:host {
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    grid-template-rows: 40px 1fr auto;
+    grid-template-areas: "aside header" "aside page" "footer footer";
+    height: 100%;
+}
+
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: .5em 1em .5em .5em;
+    border-bottom: var(--app-header-border-bottom);
+    .nav-container {
+        display: none;
+    }
+}
+
+aside {
+    grid-area: aside;
+    background-color: var(--app-layout-aside-background-color);
+}
+
+.page-container {
+    grid-area: page;
+}
+
+footer {
+    grid-area: footer;
+    background-color: var(--app-layout-footer-background-color);
+    color: var(--app-layout-footer-color);
+    padding: .5em 1em;
+}
