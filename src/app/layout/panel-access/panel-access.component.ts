@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { NzDrawerModule, NzDrawerPlacement, NzDrawerService } from 'ng-zorro-antd/drawer';
+import { SessionService } from '@app/authentication';
 import { UserDrawerMenuComponent } from './user-drawer-menu/user-drawer-menu.component';
 
 
@@ -13,7 +14,10 @@ import { UserDrawerMenuComponent } from './user-drawer-menu/user-drawer-menu.com
   styleUrl: './panel-access.component.scss'
 })
 export class PanelAccessComponent {
+  private readonly _session: SessionService = inject(SessionService);
   private readonly _drawerService: NzDrawerService = inject(NzDrawerService);
+
+  public readonly isLoggedIn = signal<boolean>(false);
 
   visible = false;
   placement: NzDrawerPlacement = 'right';

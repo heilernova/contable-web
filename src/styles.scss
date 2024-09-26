@@ -7,3 +7,9 @@
 
     --app-header-border-bottom: 1px solid hsl(215, 15%, 92%);
 }
+
+.ant-menu-horizontal.layout-header-menu {
+    // background-color: rebeccapurple;
+    border-bottom: none;
+    line-height: 25px;
+}

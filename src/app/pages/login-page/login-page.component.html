@@ -1,0 +1,41 @@
+<section>
+    <form nz-form [formGroup]="formCredentials">
+
+        <div style="display: flex; justify-content: center; padding-bottom: 1.5em; cursor: pointer;" routerLink="/">
+            <div style="display: flex; align-items: center;">
+                <img src="/logos/logo.svg" alt="" height="40">
+                <div style="font-size: 16px; font-weight: 600;">ontable</div>
+            </div>
+        </div>
+
+        <h2>
+            Iniciar sesión
+        </h2>
+
+        <div>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Por favor ingrese el usuario">
+                    <input nz-input formControlName="username" placeholder="Usuario o correo electrónico" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Por favor ingrese la contraseña">
+                <input type="password" nz-input formControlName="password" placeholder="Password" />
+            </nz-form-control>
+        </nz-form-item>
+
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+            <button type="button" nz-button [nzType]="'primary'" (click)="onSave()" [disabled]="formCredentials.invalid" [nzLoading]="loading()">Iniciar sesión</button>
+        </div>
+    </form>
+</section>
+<footer>
+    <div style="display: flex; align-items: center; column-gap: .3em;">
+        <img src="/logos/novah.svg" alt="Novah.dev" height="18">
+        <div>
+            Novah.dev
+        </div>
+    </div>
+</footer>

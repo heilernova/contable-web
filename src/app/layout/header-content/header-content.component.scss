@@ -1,0 +1,72 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+section {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.5em;
+    align-items: center;
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+    nav {
+        display: flex;
+        column-gap: .5em;
+        .nav-item {
+            border: 1px solid white;
+            padding: .1em .8em;
+            border-radius: 12px;
+            &:hover {
+                color: hsl(215, 15%, 12%);
+                background-color: hsl(215, 15%, 97%);
+                border: 1px solid hsl(215, 15%, 92%)
+            }
+        }
+    }
+
+}
+
+
+.access {
+    display: flex;
+    column-gap: .5em;
+    align-items: center;
+    button {
+        padding: 0;
+        padding: .1em .8em;
+        // height: 25px;
+        height: max-content;
+        display: flex;
+        border-radius: 12px;
+    }
+}
+
+.session-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    line-height: 1em;
+    cursor: pointer;
+    .company {
+        font-weight: 500;
+        display: none;
+    }
+    .user {
+        font-weight: 500;
+        // font-size: ;
+        // font-size: 12px;
+    }
+    &.company-show {
+        .company {
+            display: block;
+        }
+        .user {
+            font-weight: 400;
+            font-size: 12px;
+        }
+    }
+}

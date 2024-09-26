@@ -8,7 +8,8 @@ import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { apiInterceptor } from './api';
 
 registerLocaleData(es);
 
@@ -20,5 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideNzI18n(es_ES),
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
-    provideHttpClient()]
+    provideHttpClient(withFetch(), withInterceptors([apiInterceptor]))
+  ]
 };

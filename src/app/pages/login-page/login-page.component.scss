@@ -1,0 +1,26 @@
+:host {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+footer {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}

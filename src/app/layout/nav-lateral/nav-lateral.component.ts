@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-nav-lateral',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './nav-lateral.component.scss'
 })
 export class NavLateralComponent {
-
+  public readonly subMenu = signal<{ name: string, icon: string, link: string }[]>([]);
 }

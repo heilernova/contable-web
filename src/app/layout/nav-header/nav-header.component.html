@@ -1,1 +1,22 @@
-<p>nav-header works!</p>
+<div class="logo cursor-pointer noselect" routerLink="/">
+    <img src="/logos/logo.svg" alt="" height="30">
+    <div>
+        ontable
+    </div>
+</div>
+<nav>
+    <ul nz-menu nzMode="horizontal" class="layout-header-menu">
+            
+        <!-- <li nz-submenu nzTitle="Servicios contables">
+          <ul>
+            <li nz-menu-item>Certificado de ingresos</li>
+            <li nz-menu-item>Declaración de renta</li>
+            <li nz-menu-item>Asesorías</li>
+          </ul>
+        </li> -->
+
+        <li nz-menu-item routerLink="/profesionales">Profesionales</li>
+        <li nz-menu-item routerLink="/puc">PUC</li>
+        <li nz-menu-item>Bloc</li>
+    </ul>
+</nav>
