@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom, LOCALE_ID } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { apiInterceptor } from './api';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(es);
 
@@ -21,6 +22,8 @@ export const appConfig: ApplicationConfig = {
     provideNzI18n(es_ES),
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch(), withInterceptors([apiInterceptor]))
+    provideHttpClient(withFetch(), withInterceptors([apiInterceptor])),
+    { provide: LOCALE_ID, useValue: "es" },
+    importProvidersFrom(NzModalModule)
   ]
 };
