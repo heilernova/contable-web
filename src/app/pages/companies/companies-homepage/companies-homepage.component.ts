@@ -6,6 +6,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { CommonModule } from '@angular/common';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
     NzCardModule,
     NzButtonModule,
     NzListModule,
-    NzModalModule
+    NzModalModule,
+    NzInputModule
   ],
   templateUrl: './companies-homepage.component.html',
   styleUrl: './companies-homepage.component.scss'
