@@ -17,6 +17,10 @@ export class SessionService {
   
   constructor() { }
 
+  public get session(){
+    return this._session;
+  }
+
   private set(data: ISessionData | null){
     if (this._platform.isBrowser){
     
