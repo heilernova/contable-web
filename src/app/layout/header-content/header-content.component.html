@@ -17,7 +17,7 @@
 </section>
 <div class="access">
     @if (isLoggedIn()){
-        <div class="session-info" (click)="open()">
+        <div class="session-info" (click)="open()" [class.company-show]="companyShow()">
             <div class="company">
                 INVERSIONES LA CASA IMPERIAL S.A.S. ZOMAC
             </div>

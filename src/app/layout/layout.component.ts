@@ -7,11 +7,20 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { LayoutService } from './layout.service';
 import { HeaderContentComponent } from "./header-content/header-content.component";
 import { SessionService } from '@app/authentication';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [BreadcrumbsComponent, PanelAccessComponent, NavHeaderComponent, NavLateralComponent, NzDrawerModule, HeaderContentComponent],
+  imports: [
+    BreadcrumbsComponent,
+    PanelAccessComponent,
+    NavHeaderComponent,
+    NavLateralComponent,
+    NzDrawerModule,
+    HeaderContentComponent,
+    RouterOutlet
+  ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
   host: {

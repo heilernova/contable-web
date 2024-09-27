@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SessionService } from '@app/authentication';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -23,6 +23,7 @@ export class HeaderContentComponent {
   public readonly isLoggedIn = signal<boolean>(false);
   public readonly user = signal<string>("");
   public readonly company = signal<string>("");
+  public readonly companyShow = computed(() => this.company().length > 0);
 
   constructor(){
     this._session.sessionChange.subscribe(value => {

@@ -1,0 +1,30 @@
+<!-- <section>
+    
+    @for (company of companies(); track $index) {
+        <div class="card-company">
+            <div class="">{{company.accountName}}</div>
+        </div>
+    }
+</section> -->
+<nz-list nzSize="small">
+    @for (company of companies(); track $index) {
+        <nz-list-item>
+            <div class="company-info">
+                <div class="icon">
+                    <i class="fa-solid fa-building" [classList]="company.taxpayerType == 'legal' ? 'fa-solid fa-building' : 'fa-solid fa-user-tie'"></i>
+                </div>
+                <div class="info">
+                    <div class="name">
+                        {{company.accountName}}
+                    </div>
+                    <div class="nit">
+                        {{company.nit | number}}
+                    </div>
+                </div>
+                <div>
+                    <button nz-button nzType="text" (click)="company.previewModal()">Ver mas</button>
+                </div>
+            </div>
+        </nz-list-item>
+    }
+</nz-list>

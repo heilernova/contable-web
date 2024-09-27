@@ -1,0 +1,23 @@
+<section>
+    <div>NIT: {{accountName()}}</div>
+    @if (data.taxpayerType == 'legal'){
+        <div>Razón social: {{data.companyName}}</div>
+    } @else { 
+
+    }
+    <div>Nombre comercial: {{data.tradeName}}</div>
+    <div>Teléfono: {{data.cellphone}}</div>
+    <div>Correo electrónico: {{data.email}}</div>
+
+    <div>
+        Responsabilidades fiscales
+        <ul>
+
+        </ul>       
+    </div>
+</section>
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="onClickEdit()">Editar</button>
+    <button nz-button nzType="default" (click)="onClickMoreInfo()">Ver mas información</button>
+    <button nz-button nzType="primary">Cerrar dialog</button>
+</div>

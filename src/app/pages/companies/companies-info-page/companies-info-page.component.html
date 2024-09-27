@@ -1,0 +1,38 @@
+<section>
+    <h2>{{company()?.accountName ?? ""}}</h2>
+
+    <div>
+        Nombre comercial: {{company()?.tradeName}}
+    </div>
+    <ul>
+        <li>
+            Celular: {{company()?.cellphone ?? ""}}
+        </li>
+        <li>
+            Correo electrónico: {{company()?.email ?? ""}}
+        </li>
+    </ul>
+
+    <div>
+        <h3>Actividades económicas</h3>
+        <ul>
+            @for (item of company()?.economicActivities ?? []; track $index) {
+                <li>
+                    {{item}} - {{item | economicActivities | async}}
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div>
+        <h3>Responsabilidades fiscales</h3>
+        <ul>
+            @for (item of company()?.responsibilities ?? []; track $index) {
+                <li>
+                    {{item | number: '2.0'}} - {{item | taxResponsibilities | async}}
+                </li>
+            }
+        </ul>
+    </div>
+    <button nz-button (click)="onClickEdit()">Editar información</button>
+</section>

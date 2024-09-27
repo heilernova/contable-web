@@ -1,0 +1,28 @@
+// :host {
+//     display: flex;
+//     flex-direction: column;
+// }
+// section {
+//     display: grid;
+//     width: 100%;
+//     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+//     column-gap: 1em;
+// }
+
+.company-info {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 3em 1fr auto;
+    column-gap: .5em;
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3em;
+    }
+}

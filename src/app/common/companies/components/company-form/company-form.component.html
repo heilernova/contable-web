@@ -1,0 +1,138 @@
+<form nz-form nzLayout="vertical" [formGroup]="formGroup">
+
+    <section class="dni">
+        <nz-form-item>
+            <nz-form-label>Tipo de contribuyente</nz-form-label>
+            <nz-form-control>
+                <nz-select formControlName="taxpayerType">
+                    @for (item of listTaxpayerTypes(); track $index) {
+                        <nz-option [nzLabel]="item.name" [nzValue]="item.value"/>
+                    }
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label>NIT</nz-form-label>
+          <nz-form-control>
+            <input nz-input  [imask]="maskNit" formControlName="nit"/>
+          </nz-form-control>
+        </nz-form-item>
+    </section>
+
+
+    <section class="name-container" [class.is-legal]="isLegal()">
+        <nz-form-item class="name">
+            <nz-form-label nzRequired>Nombre</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="name" class="uppercase">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="last-name">
+            <nz-form-label nzRequired>Apellido</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="lastName" class="uppercase">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="company-name">
+            <nz-form-label nzRequired>Razón social</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="companyName" class="uppercase">
+            </nz-form-control>
+        </nz-form-item>
+    </section>
+
+    
+    <nz-form-item>
+        <nz-form-label>Nombre comercial</nz-form-label>
+        <nz-form-control>
+            <input nz-input formControlName="tradeName" class="uppercase">
+        </nz-form-control>
+    </nz-form-item>
+    <section class="contact">
+        <nz-form-item class="cellphone">
+            <nz-form-label>Teléfono Movil</nz-form-label>
+            <nz-form-control>
+                <nz-input-cellphone formControlName="cellphone"/>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label>Correo electrónico</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="email">
+            </nz-form-control>
+        </nz-form-item>
+        <!-- <nz-form-item>
+            <nz-form-label>Acceso de la DIAN</nz-form-label>
+            <nz-form-control>
+                <nz-input-group nzAddOnBefore="Contraseña">
+                    <input type="text" nz-input/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item> -->
+    </section>
+
+
+
+    <section style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 1em;">
+        <nz-form-item>
+            <nz-form-label nzRequired>Departamento</nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch formControlName="department">
+                @for (item of listLocations(); track $index) {
+                  <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
+                }
+              </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired>Ciudad</nz-form-label>
+            <nz-form-control>
+              <nz-select nzShowSearch formControlName="city">
+                @for (item of listCities(); track $index) {
+                  <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
+                }
+              </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </section>
+
+    <nz-form-item>
+        <nz-form-label>Dirección</nz-form-label>
+        <nz-form-control>
+            <input nz-input formControlName="address" class="uppercase">
+        </nz-form-control>
+    </nz-form-item>
+
+
+   
+
+
+
+
+    <section>
+        <nz-form-item>
+            <nz-form-label>Actividades económicas (CIIU)</nz-form-label>
+            <nz-form-control>
+              <nz-select nzMode="multiple" formControlName="economicActivities">
+                @for (item of listCIIU(); track $index) {
+                    <nz-option [nzLabel]="item.code + ' - ' + item.name" [nzValue]="item.code"></nz-option>
+                }
+              </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        
+        <nz-form-item>
+            <nz-form-label>Responsabilidades fiscales</nz-form-label>
+            <nz-form-control>
+              <nz-select nzMode="multiple" formControlName="responsibilities">
+                @for (item of listTaxResponsibilities(); track $index) {
+                    <nz-option [nzLabel]="item.id + ' - ' + item.name" [nzValue]="item.id"></nz-option>
+                }
+              </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </section>
+
+</form>

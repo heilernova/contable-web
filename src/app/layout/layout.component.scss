@@ -26,6 +26,9 @@
     
     .page-container {
         grid-area: page;
+        .page-content {
+            padding: 1em;
+        }
     }
     
     footer {
