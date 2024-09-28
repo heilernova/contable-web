@@ -112,7 +112,7 @@ export class CompanyFormComponent {
       name: formValues.name,
       lastName: formValues.lastName,
       companyName: formValues.companyName,
-      tradeName: formValues.tradeName,
+      tradeName: formValues.tradeName ? formValues.tradeName : null,
       economicActivities: formValues.economicActivities,
       responsibilities: formValues.responsibilities,
       cellphone: formValues.cellphone ?? "",
@@ -129,6 +129,7 @@ export class CompanyFormComponent {
     } else {
       data.companyName = null;
     }
+    
     return data;
   }
 }

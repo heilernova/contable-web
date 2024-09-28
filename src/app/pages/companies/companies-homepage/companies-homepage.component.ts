@@ -38,6 +38,10 @@ export class CompaniesHomepageComponent {
     }
   }
 
+  public onClickRegisterCompany(): void {
+    this._companies.register();
+  }
+
   public onClickPreviewCompany(company: Company): void {
     
   }

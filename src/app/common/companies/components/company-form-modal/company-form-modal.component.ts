@@ -5,6 +5,9 @@ import { Company } from '../../company.model';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ApiCompaniesService } from '@app/api/companies';
+import { CompaniesService } from '../../companies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-form-modal',
@@ -20,6 +23,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CompanyFormModalComponent {
   private readonly _nzModalRef =  inject(NzModalRef);
   private readonly _nzMessage = inject(NzMessageService);
+  private readonly _companies = inject(CompaniesService);
 
   @ViewChild(CompanyFormComponent)
   public companyForm!: CompanyFormComponent;
@@ -47,6 +51,14 @@ export class CompanyFormModalComponent {
         } else {
           this._nzMessage.error(err.message ?? "");
         }
+      })
+    } else {
+      // Registrar n
+      this._companies.list.add(values)
+      .then(company => {
+        this._nzModalRef.destroy(company);
+      }).catch(err => {
+        this._nzMessage.error(err.error.message);
       })
     }
   }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { APICompanyInfo } from '@api/interfaces';
+import { APICompanyCreateBody, APICompanyInfo } from '@api/interfaces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,5 +21,9 @@ export class ApiCompaniesService {
 
   update(id: string, data: any): Observable<APICompanyInfo> {
     return this._http.put<APICompanyInfo>(`companies/${id}`, data);
+  }
+
+  create(data: APICompanyCreateBody): Observable<APICompanyInfo> {
+    return this._http.post<APICompanyInfo>("companies", data);
   }
 }
