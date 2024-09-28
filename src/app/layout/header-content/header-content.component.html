@@ -19,7 +19,7 @@
     @if (isLoggedIn()){
         <div class="session-info" (click)="open()" [class.company-show]="companyShow()">
             <div class="company">
-                INVERSIONES LA CASA IMPERIAL S.A.S. ZOMAC
+                {{company() }}
             </div>
             <div class="user">
                 {{user()}}

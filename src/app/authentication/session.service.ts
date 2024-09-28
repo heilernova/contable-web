@@ -64,6 +64,7 @@ export class SessionService {
     return new Promise((resolve, reject) => {
       this._apiAuth.verifySession(companyId).subscribe({
         next: res => {
+          console.log(res);
           this.set(res);
           resolve(true);
         },

@@ -30,6 +30,9 @@ export class HeaderContentComponent {
       if (value) {
         this.isLoggedIn.set(true);
         this.user.set(value.name);
+        if (value.company){
+          this.company.set(value.company.name);
+        }
       } else {
         this.isLoggedIn.set(false);
       }
