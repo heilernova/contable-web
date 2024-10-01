@@ -26,8 +26,10 @@
     
     .page-container {
         grid-area: page;
+        overflow: auto;
         .page-content {
             padding: 1em;
+            overflow: auto;
         }
     }
     
@@ -50,7 +52,8 @@
             }
         }
         aside {
-            display: block;
+            display: grid;
+            grid-template-rows: 50px 1fr;
         }
     }
    

@@ -3,9 +3,16 @@
         Contabilidad
     </div>
     <ul>
-        <li>
-
-        </li>
+        @for (item of accountingMenu(); track $index) {
+            <li class="item" [routerLink]="item.link">
+                <div class="icon">
+                    <i [classList]="item.icon"></i>
+                </div>
+                <div class="name">
+                    {{item.name}}
+                </div>
+            </li>
+        }
     </ul>
 </section>
 <section>
