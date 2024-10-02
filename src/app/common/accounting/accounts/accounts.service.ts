@@ -20,7 +20,8 @@ export class AccountsService {
   constructor() { 
     this.accountList = new AccountList({ api: this._api, nzModalService: this._nzModalService });
     this._session.sessionChange.subscribe(value => {
-      this.accountList.setCompanyId(value?.company?.id ?? "")
+      this.accountList.setCompanyId(value?.company?.id ?? "");
+      this.accountList.reset();
     })
   }
 
@@ -49,6 +50,11 @@ export class AccountList {
   constructor(a: { api: ApiAccountsService, nzModalService: NzModalService  }){
     this._api = a.api;
     this._nzModalServices = a.nzModalService;
+  }
+
+  public reset(): void {
+    this._list = [];
+    this._loaded = false;
   }
 
   public setCompanyId(value: string): void {

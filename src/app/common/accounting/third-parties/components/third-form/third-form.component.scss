@@ -1,0 +1,34 @@
+.dni {
+    display: flex;
+    column-gap: 1em;
+}
+
+
+
+.name-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+    .company-name {
+        display: none;
+    }
+
+    &.is-legal {
+        grid-template-columns: 1fr;
+        .company-name {
+            display: block;
+        }
+        .name {
+            display: none;
+        }
+        .last-name {
+            display: none;
+        }
+    }
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: 10em 1fr;
+    column-gap: 1em;
+}

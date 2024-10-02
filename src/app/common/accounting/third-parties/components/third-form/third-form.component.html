@@ -1,5 +1,8 @@
 <form nz-form nzLayout="vertical" [formGroup]="formGroup">
-
+    <section style="display: flex; align-content: center; margin-bottom: 1em;">
+        <label nz-checkbox formControlName="isSupplier">Proveedor</label>
+        <label nz-checkbox formControlName="isCustomer">Cliente</label>
+    </section>
     <section class="dni">
         <nz-form-item>
             <nz-form-label>Tipo de contribuyente</nz-form-label>
@@ -11,15 +14,15 @@
                 </nz-select>
             </nz-form-control>
         </nz-form-item>
-
         <nz-form-item>
-          <nz-form-label>NIT</nz-form-label>
-          <nz-form-control>
-            <input nz-input  [imask]="maskNit" formControlName="nit"/>
-          </nz-form-control>
+            <nz-form-label nzRequired>NIT</nz-form-label>
+            <nz-form-control>
+              <input nz-input  [imask]="maskNit" formControlName="nit"/>
+            </nz-form-control>
         </nz-form-item>
-    </section>
 
+
+    </section>
 
     <section class="name-container" [class.is-legal]="isLegal()">
         <nz-form-item class="name">
@@ -42,7 +45,6 @@
         </nz-form-item>
     </section>
 
-    
     <nz-form-item>
         <nz-form-label>Nombre comercial</nz-form-label>
         <nz-form-control>
@@ -66,40 +68,38 @@
 
 
 
-    <section style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 1em;">
+
+    <section class="address">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 1em;">
+            <nz-form-item>
+                <nz-form-label>Departamento</nz-form-label>
+                <nz-form-control>
+                  <nz-select nzShowSearch formControlName="department">
+                    @for (item of listLocations(); track $index) {
+                      <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
+                    }
+                  </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label>Ciudad</nz-form-label>
+                <nz-form-control>
+                  <nz-select nzShowSearch formControlName="city">
+                    @for (item of listCities(); track $index) {
+                      <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
+                    }
+                  </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
         <nz-form-item>
-            <nz-form-label nzRequired>Departamento</nz-form-label>
+            <nz-form-label>Dirección</nz-form-label>
             <nz-form-control>
-              <nz-select nzShowSearch formControlName="department">
-                @for (item of listLocations(); track $index) {
-                  <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
-                }
-              </nz-select>
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzRequired>Ciudad</nz-form-label>
-            <nz-form-control>
-              <nz-select nzShowSearch formControlName="city">
-                @for (item of listCities(); track $index) {
-                  <nz-option [nzLabel]="item.name" [nzValue]="item.code"/>
-                }
-              </nz-select>
+                <input nz-input formControlName="address" class="uppercase">
             </nz-form-control>
         </nz-form-item>
     </section>
-
-    <nz-form-item>
-        <nz-form-label>Dirección</nz-form-label>
-        <nz-form-control>
-            <input nz-input formControlName="address" class="uppercase">
-        </nz-form-control>
-    </nz-form-item>
-
-
-   
-
-
 
 
     <section>

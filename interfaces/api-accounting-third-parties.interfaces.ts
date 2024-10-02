@@ -2,61 +2,61 @@ import { APITaxpayerType } from "./global.types";
 
 export interface APIAccountingThirdInfo {
     id: string;
-    created_at: string;
-    updated_at: string;
-    tag_id: string;
-    taxpayer_type: APITaxpayerType;
+    createdAt: string;
+    updatedAt: string;
+    tagId: string;
+    taxpayerType: APITaxpayerType;
     nit: string;
-    account_name: string;
+    accountName: string;
     name: string | null;
-    last_name: string | null;
-    company_name: string | null;
-    trade_name: string | null;
-    is_supplier: boolean;
-    is_customer: boolean;
+    lastName: string | null;
+    companyName: string | null;
+    tradeName: string | null;
+    isSupplier: boolean;
+    isCustomer: boolean;
     department: string | null;
     city: string | null;
     address: string | null;
     email: string | null;
     cellphone: string | null;
-    economic_activities: string[];
-    responsibilities: string[]
+    economicActivities: string[];
+    responsibilities: number[]
 }
 
 export interface APIAccountingThirdCreate {
     tag_id?: string;
-    taxpayer_type: APITaxpayerType;
+    taxpayerType: APITaxpayerType;
     nit: string;
     name?: string | null;
-    last_name?: string | null;
-    company_name?: string | null;
+    lastName?: string | null;
+    companyName?: string | null;
     trade_name?: string | null;
-    is_supplier?: boolean;
-    is_customer?: boolean;
+    isSupplier?: boolean;
+    isCustomer?: boolean;
     department?: string | null;
     city?: string | null;
     address?: string | null;
     email?: string | null;
     cellphone?: string | null;
-    economic_activities?: string[];
-    responsibilities?: string[]
+    economicActivities?: string[];
+    responsibilities?: number[]
 }
 
 export interface APIAccountingThirdUpdate {
     tag_id?: string;
-    taxpayer_type?: APITaxpayerType;
+    taxpayerType?: APITaxpayerType;
     nit?: string;
     name?: string | null;
-    last_name?: string | null;
-    company_name?: string | null;
-    trade_name?: string | null;
-    is_supplier?: boolean;
-    is_customer?: boolean;
+    lastName?: string | null;
+    companyName?: string | null;
+    tradeName?: string | null;
+    isSupplier?: boolean;
+    isCustomer?: boolean;
     department?: string | null;
     city?: string | null;
     address?: string | null;
     email?: string | null;
     cellphone?: string | null;
-    economic_activities?: string[];
-    responsibilities?: string[]
+    economicActivities?: string[];
+    responsibilities?: number[]
 }

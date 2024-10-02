@@ -1,0 +1,21 @@
+<section>
+    <button nz-button (click)="onClickRegisterThird()">
+        Agregar tercero
+    </button>
+</section>
+<section>
+    <ul nz-list>
+        @for (item of list(); track $index) {
+            <li nz-list-item>
+                {{item.accountName}}
+                <ul nz-list-item-actions>
+                    <nz-list-item-action>
+                        <a (click)="item.edit()">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </nz-list-item-action>
+                </ul>
+            </li>
+        }
+    </ul>
+</section>
