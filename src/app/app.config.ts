@@ -11,6 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { apiInterceptor } from './api';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(es);
 
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(withFetch(), withInterceptors([apiInterceptor])),
     { provide: LOCALE_ID, useValue: "es" },
-    importProvidersFrom(NzModalModule)
+    importProvidersFrom(NzModalModule),
+    importProvidersFrom(BrowserAnimationsModule)
   ]
 };
