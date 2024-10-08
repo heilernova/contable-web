@@ -1,0 +1,36 @@
+<!-- @if (isAuxiliary()){
+    <ul nz-list nzSize="small">
+        @for (item of data().children(); track $index) {
+            <li nz-list-item>
+                {{item.title}}
+                <ul nz-list-item-actions>
+                    <nz-list-item-action>
+                      <a><i class="fa-solid fa-pen"></i></a>
+                    </nz-list-item-action>
+                  </ul>
+            </li>
+        }
+    </ul>
+} @else {
+    @if (data().children().length > 0){
+        <nz-collapse>
+            @for (item of data().children(); track $index) {
+                
+                <nz-collapse-panel [nzHeader]="item.title" [nzExtra]="extraTpl" (nzActiveChange)="item.loadChildren()">
+                    @if ( data().code.length < 8 ){
+                        <app-tree-account-node [data]="item"/>
+                    }
+                </nz-collapse-panel>
+                
+                <ng-template #extraTpl >
+                    <button nz-button nzType="text" (click)="$event.stopPropagation();onClickAddAccount(item)">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button nz-button nzType="text" (click)="$event.stopPropagation();onClickEditNode(item)">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </ng-template>
+            }
+        </nz-collapse>
+    }
+} -->

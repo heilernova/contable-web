@@ -42,7 +42,7 @@ export class ThirdPartiesService {
     })
   }
 
-  create(values: IThirdFormValues){
+  create(values: IThirdFormValues): Promise<Third>{
     return new Promise((resolve, reject) => {
       this._api.create(values).subscribe({
         next: res => {
@@ -55,12 +55,14 @@ export class ThirdPartiesService {
     });
   }
 
-  register(): Promise<Third>{
+  register(): Promise<Third | undefined>{
     return new Promise((resolve, reject) => {
       this._nzModalService.create({
         nzTitle: "Registrar tercero",
         nzContent: ThirdModalComponent,
         nzWidth: "900px"
+      }).afterClose.subscribe(value => {
+        resolve(value);
       })
     })
   }

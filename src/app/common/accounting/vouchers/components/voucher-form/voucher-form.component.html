@@ -1,0 +1,171 @@
+<form  nz-form nzLayout="vertical" [formGroup]="formGroup">
+    <section class="info">
+        <div style="display: grid; grid-template-columns: 1fr auto; column-gap: 1em; width: 35em;">
+            <nz-form-item>
+                <nz-form-label nzRequired>Tipo de comprobante</nz-form-label>
+                <nz-form-control>
+                    <nz-input-group nzCompact style="width: 100;">
+                        <nz-select style="width: calc(100% - 3em)">
+                            @for (item of voucherTypes(); track $index) {
+                                <nz-option [nzLabel]="item.name" [nzValue]="item.id"/>
+                            }
+                        </nz-select>
+                        <button nz-button style="width: 3em;" (click)="onOpenVoucherTypes()">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </nz-input-group>
+                </nz-form-control>
+    
+            </nz-form-item>
+            <nz-form-item style="width: 9em;">
+                <nz-form-label nzRequired>Grupo</nz-form-label>
+                <nz-form-control>
+                    <nz-select nzAllowClear>
+                        <nz-option nzLabel="Ingresos" nzValue="income"/>
+                        <nz-option nzLabel="Ventas" nzValue="sales"/>
+                        <nz-option nzLabel="Compras" nzValue="purchases"/>
+                        <nz-option nzLabel="Gastos" nzValue="expenses"/>
+                        <nz-option nzLabel="Costos" nzValue="costs"/>
+                        <nz-option nzLabel="Movimientos" nzValue="transfers"/>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div style="display: flex;">
+
+            <nz-form-item>
+                <nz-form-label nzRequired>Fecha de elaboración</nz-form-label>
+                <nz-form-control>
+                    <nz-date-picker nzFormat="yyyy-MM-dd HH:mm:ss" nzShowTime/>
+                </nz-form-control>
+            </nz-form-item>
+    
+            <nz-form-control style="width: 10em;">
+                <nz-form-label nzRequired>No. de comprobante</nz-form-label>
+                <nz-form-control>
+                    <nz-input-group nzCompact>
+                        <input type="text" nz-input style="width: 5em;" placeholder="Prefijo" class="uppercase"/>
+                        <input type="text" nz-input style="width: calc(100% - 5em);" placeholder="Folio"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-control>
+    
+        </div>
+
+    </section>
+
+
+    <section class="accounting-records">
+        <h3>Registros contables</h3>
+        <div class="records">
+            <div cdkDropList (cdkDropListDropped)="drop($event)" class="accounting-record-container" formArrayName="accounts">
+                @for (item of formGroup.controls.accounts.controls; track i; let i = $index) {
+                    <div cdkDrag [formGroupName]="i" class="accounting-record">
+                        <button nz-button>
+                            {{(i + 1) | number: '2.0'}}
+                        </button>
+                        
+                        <nz-input-group nzCompact style="width: 100;">
+                            <nz-select style="width: calc(100% - 3em)" formControlName="accountId">
+                                @for (item of accounts(); track $index) {
+                                    <nz-option [nzValue]="item.id" [nzLabel]="item.code + ' - ' + item.name"/>
+                                }
+                            </nz-select>
+                            <button nz-button style="width: 3em;" (click)="onRegisterNewAccount(i)">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </nz-input-group>
+    
+                        <nz-input-group nzCompact>
+                            <nz-select style="width: calc(100% - 3em)" class="thid" nzPlaceHolder="Tercero" nzShowSearch formControlName="thirdId">
+                                @for (item of thirdParties(); track $index) {
+                                    <nz-option [nzValue]="item.id" [nzLabel]="item.accountName"/>
+                                }
+                            </nz-select>
+                            <button nz-button style="width: 3em;" (click)="onRegisterThird(i)">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </nz-input-group>
+                        
+                        <input nz-input placeholder="Descripción">
+                        <nz-input-currency formControlName="debit"/>
+                        <nz-input-currency formControlName="credit"/> 
+                        <button nz-button>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="records-footer">
+            <div>
+                <button nz-button (click)="onRecordAccountAdd()">Agregar registro</button>
+            </div>
+            <div class="balance" [class.invalid]="invalidRecordAccounts()">
+                <nz-input-currency [formControl]="debit"/>
+                <nz-input-currency [formControl]="credit"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="records" style="display: none;">
+        <h3>Registros contables</h3>
+        <ul formArrayName="accounts" cdkDropList (cdkDropListDropped)="drop($event)" class="example-list">
+            @for (item of listAc; track i; let i = $index) {
+                <li [formGroupName]="i" cdkDrag class="example-box">
+                    <button nz-button>
+                        {{(i + 1) | number: '2.0'}}
+                    </button>
+                    
+                    <nz-input-group nzCompact style="width: 100;">
+                        <nz-select style="width: calc(100% - 3em)" formControlName="accountId">
+                            @for (item of accounts(); track $index) {
+                                <nz-option [nzValue]="item.id" [nzLabel]="item.code + ' - ' + item.name"/>
+                            }
+                        </nz-select>
+                        <button nz-button style="width: 3em;" (click)="onRegisterNewAccount(i)">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </nz-input-group>
+
+                    <nz-input-group nzCompact>
+                        <nz-select style="width: calc(100% - 3em)" class="thid" nzPlaceHolder="Tercero" nzShowSearch formControlName="thirdId">
+                            @for (item of thirdParties(); track $index) {
+                                <nz-option [nzValue]="item.id" [nzLabel]="item.accountName"/>
+                            }
+                        </nz-select>
+                        <button nz-button style="width: 3em;" (click)="onRegisterThird(i)">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </nz-input-group>
+                    
+                    <input nz-input placeholder="Descripción">
+                    <nz-input-currency/>
+                    <nz-input-currency/> 
+                    <button nz-button (click)="onRemoveRecordAccount(i)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </li>
+            }
+        </ul>
+        <button nz-button (click)="onAddAccount()">Agregar registros</button>
+    </section> -->
+
+    <section class="observations">
+        <nz-form-item class="code">
+            <nz-form-label>Observaciones</nz-form-label>
+            <nz-form-control>
+                <textarea nz-input class="uppercase"></textarea>
+            </nz-form-control>
+        </nz-form-item>
+    </section>
+</form>
+
+<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    @for (movie of movies; track movie) {
+      <div class="example-box" cdkDrag>{{movie}}</div>
+    }
+  </div> -->
+
+  <button (click)="getRawValues()">Get</button>

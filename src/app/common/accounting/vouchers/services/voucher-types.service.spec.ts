@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PucService } from './puc.service';
+import { VoucherTypesService } from '../voucher-types.service';
 
-describe('PucService', () => {
-  let service: PucService;
+describe('VoucherTypesService', () => {
+  let service: VoucherTypesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PucService);
+    service = TestBed.inject(VoucherTypesService);
   });
 
   it('should be created', () => {

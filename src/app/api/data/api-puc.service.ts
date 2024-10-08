@@ -21,15 +21,16 @@ export class ApiPucService {
 export type APIPucTree = {
   code: string,
   name: string,
-  groups: {
+  children: {
     code: string,
     name: string,
-    accounts: {
+    children: {
       code: string,
       name: string,
-      subAccounts: {
+      children: {
         code: string,
-        name: string
+        name: string,
+        children: any[]
       }[]
     }[]
   }[]

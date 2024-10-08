@@ -32,3 +32,11 @@
     grid-template-columns: 10em 1fr;
     column-gap: 1em;
 }
+
+form {
+    &.small {
+        .address, .b {
+            display: none;
+        }
+    }
+}

@@ -21,10 +21,12 @@ ul {
 
 .item {
     display: flex;
+    align-items: center;
     .icon {
-        width: 2em;
+        width: 2.5em;
         display: flex;
         align-items: center;
         justify-content: center;
+        // background-color: rebeccapurple;
     }
 }

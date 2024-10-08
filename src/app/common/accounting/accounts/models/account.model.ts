@@ -1,7 +1,6 @@
-import { HttpClient } from "@angular/common/http";
-import { IAccount } from "./accounts.service";
+import { IAccount } from "../accounts.service";
 import { NzModalService } from "ng-zorro-antd/modal";
-import { AccountFormModalComponent } from "./components/account-form-modal/account-form-modal.component";
+import { AccountFormModalComponent } from "../components/account-form-modal/account-form-modal.component";
 import { ApiAccountsService } from "@app/api/accounting/accounts";
 import { setPropertiesInObject } from "@app/common/utils";
 
@@ -37,6 +36,7 @@ export class Account {
         this._nzModalService.create({
             nzTitle: "Editar",
             nzContent: AccountFormModalComponent,
+            nzWidth: "700px",
             nzData: this
         })
     }

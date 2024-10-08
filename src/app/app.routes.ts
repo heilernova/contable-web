@@ -7,7 +7,7 @@ export const routes: Routes = [
         loadComponent: () => import('./layout').then(x => x.LayoutComponent),
         children: [
             { path: 'empresas', loadChildren: () => import('./pages/companies/companies.routes') },
-            { path: 'contabilidad', loadChildren: () => import('./pages/accounting/accounting.routes') }
+            { path: 'contabilidad', loadChildren: () => import('./pages/accounting/accounting.routes') },
         ]
     }
 ];

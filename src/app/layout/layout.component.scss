@@ -27,9 +27,12 @@
     .page-container {
         grid-area: page;
         overflow: auto;
+        display: flex;
+        flex-direction: column;
         .page-content {
             padding: 1em;
             overflow: auto;
+            height: 100%;
         }
     }
     

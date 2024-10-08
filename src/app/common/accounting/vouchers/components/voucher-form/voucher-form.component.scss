@@ -1,0 +1,73 @@
+
+.cdk-drag-preview {
+  border: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+  
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+  
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+  
+//   .example-box:last-child {
+//     border: none;
+//   }
+  
+.accounting-record-container.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  row-gap: 1em;
+
+  .accounting-records {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    .records {
+      display: flex;
+      flex-direction: column;
+      .accounting-record-container {
+        display: flex;
+        flex-direction: column;
+        .accounting-record {
+          max-width: 100%;
+          // border: solid 1px #ccc;
+          display: block;
+          background: white;
+          // border-radius: 4px;
+          overflow: hidden;
+          display: grid;
+          align-items: center;
+          grid-template-columns: auto 30em 30em 1fr 12em 12em auto;
+        }
+
+      }
+    }
+    .records-footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      .balance {
+        display: flex;
+        &.invalid {
+          background-color: red;
+          padding: 0 0 0 5em ;
+        }
+      }
+    }
+  }
+}

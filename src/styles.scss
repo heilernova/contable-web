@@ -19,4 +19,7 @@
 // }
 .uppercase {
     text-transform: uppercase;
+    &:placeholder-shown {
+        text-transform: none;
+    }
 }

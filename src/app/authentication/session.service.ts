@@ -37,11 +37,11 @@ export class SessionService {
 
   public init(){
     if (this._platform.isBrowser){
-      console.log("Hola init")
       let sessionString: string | null = localStorage.getItem("session");
       if (sessionString){
-        let jsonObject = JSON.parse(atob(sessionString));
+        let jsonObject: ISessionData = JSON.parse(atob(sessionString));
         this.set(jsonObject);
+        this.verifySession(jsonObject.company?.id  ?? undefined);
       }
     }
   }
@@ -64,7 +64,6 @@ export class SessionService {
     return new Promise((resolve, reject) => {
       this._apiAuth.verifySession(companyId).subscribe({
         next: res => {
-          console.log(res);
           this.set(res);
           resolve(true);
         },

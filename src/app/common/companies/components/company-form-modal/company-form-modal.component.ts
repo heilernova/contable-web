@@ -38,6 +38,18 @@ export class CompanyFormModalComponent {
   }
 
   onClickSave(): void {
+
+    if (this.companyForm.formGroup.invalid){
+      this._nzMessage.warning("Faltan campos por completar");
+      Object.values(this.companyForm.formGroup.controls).forEach(control => {
+        if (control.invalid){
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true })
+        }
+      })
+      return;
+    }
+
     let values = this.companyForm.getRawValues();
     if (this.data){
       this.data.update(values)

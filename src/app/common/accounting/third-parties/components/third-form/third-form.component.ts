@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CiiuService, ICiiu, ITaxResponsibilities, TaxResponsibilitiesService } from '@app/common/data';
 import { DataLocationsService, ICity, IDepartment } from '@app/common/data/locations';
@@ -36,6 +36,8 @@ export class ThirdFormComponent {
   public readonly maskNit = { mask: Number, thousandsSeparator: '.', radix: '.', mapToRadix: [','], autofix: true }
   public readonly isLegal = signal<boolean>(true);
   public readonly disable = signal<boolean>(true);
+
+  public readonly size = input<"default" | "small">("small");
 
   public readonly formGroup = createForm();
 

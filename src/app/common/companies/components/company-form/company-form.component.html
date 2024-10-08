@@ -13,7 +13,7 @@
         </nz-form-item>
 
         <nz-form-item>
-          <nz-form-label>NIT</nz-form-label>
+          <nz-form-label nzRequired>NIT</nz-form-label>
           <nz-form-control>
             <input nz-input  [imask]="maskNit" formControlName="nit"/>
           </nz-form-control>
@@ -51,13 +51,13 @@
     </nz-form-item>
     <section class="contact">
         <nz-form-item class="cellphone">
-            <nz-form-label>Teléfono Movil</nz-form-label>
+            <nz-form-label nzRequired>Teléfono Movil</nz-form-label>
             <nz-form-control>
                 <nz-input-cellphone formControlName="cellphone"/>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label>Correo electrónico</nz-form-label>
+            <nz-form-label nzRequired>Correo electrónico</nz-form-label>
             <nz-form-control>
                 <input nz-input formControlName="email">
             </nz-form-control>

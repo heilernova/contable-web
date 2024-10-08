@@ -1,0 +1,20 @@
+<section>
+    Controles
+</section>
+<nz-collapse nzAccordion>
+    @for (item of list(); track $index) {
+        
+        <nz-collapse-panel [nzHeader]="item.title" (nzActiveChange)="item.loadChildren()" [nzExtra]="extraTpl">
+            <div style="display: flex; flex-direction: column; row-gap: .3em;">
+                <app-tree-account-node [data]="item"/>
+                <button nz-button (click)="item.addChildren()">
+                    <i class="fa-solid fa-plus"></i>
+                    Agrear grupo
+                </button>
+            </div>
+        </nz-collapse-panel>
+
+        <ng-template #extraTpl >
+        </ng-template>
+    }
+</nz-collapse>

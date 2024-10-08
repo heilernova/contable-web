@@ -1,0 +1,20 @@
+<nz-list>
+    @for (item of list(); track $index) {
+        <nz-list-item>
+            {{item.name}}
+            <ul nz-list-item-actions>
+                <nz-list-item-action>
+                    <div style="display: flex; column-gap: .5em;">
+                        <a (click)="item.edit()">Editar</a>
+                        <a (click)="item.edit()">Eliminar</a>
+                    </div>
+                </nz-list-item-action>
+              </ul>
+        </nz-list-item>
+    }
+</nz-list>
+
+<div *nzModalFooter>
+    <button nz-button nzType="default" (click)="onAdd()">Agregar nuevo tipo de comprobante</button>
+    <button nz-button nzType="primary">Cerrar</button>
+</div>

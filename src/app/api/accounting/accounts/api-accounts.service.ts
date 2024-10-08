@@ -17,6 +17,10 @@ export class ApiAccountsService {
   public getAll(): Observable<IAccount[]> {
     return this._http.get<IAccount[]>("accounting/accounts")
   }
+  
+  public getTree(): Observable<any[]>{
+    return this._http.get<any[]>("accounting/accounts?type=tree")
+  }
 
   public update(id: string, data: { code?: string, name?: string, description?: string | null }): Observable<IAccount> {
     return this._http.put<IAccount>(`accounting/accounts/${id}`, data);

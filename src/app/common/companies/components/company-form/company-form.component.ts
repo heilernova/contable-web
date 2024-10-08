@@ -65,8 +65,7 @@ export class CompanyFormComponent {
         city: value.city,
         address: value.address,
         economicActivities: value.economicActivities,
-        responsibilities: value.responsibilities,
-        passwordDian: ""
+        responsibilities: value.responsibilities
       });
       if (value.taxpayerType == "legal"){
         this.listTaxpayerTypes.set([{ name: "Jurídica", value: "legal" }]);
@@ -144,9 +143,8 @@ const createForm = () => new FormGroup({
   tradeName: new FormControl<string>("", { nonNullable: true }),
   economicActivities: new FormControl<string[]>([], { nonNullable: true }),
   responsibilities: new FormControl<number[]>([], { nonNullable: true }),
-  cellphone: new FormControl<string | null>(null, { }),
-  email: new FormControl<string>("", {  nonNullable: true}),
-  passwordDian: new FormControl<string>("", { nonNullable: true }),
+  cellphone: new FormControl<string | null>(null, { validators: Validators.required }),
+  email: new FormControl<string>("", {  nonNullable: true, validators: Validators.required}),
   department: new FormControl<string | null>( null, { validators: Validators.required} ),
   city: new FormControl<string | null>(null, { validators: Validators.required }),
   address: new FormControl<string | null>(null, { validators: Validators.required }),

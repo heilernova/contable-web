@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { SessionService } from '@app/authentication';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AccountFormModalComponent } from './components/account-form-modal/account-form-modal.component';
-import { Account } from './account.model';
+import { Account } from './models/account.model';
 import { ApiAccountsService } from '@app/api/accounting/accounts';
+import { TypeAccount } from './interfaces/types';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,19 @@ export class AccountsService {
     })
   }
 
-  register(){
-    this._nzModalService.create({
-      nzTitle: "Registrar cuenta",
-      nzContent: AccountFormModalComponent
+  register(options?: { type?: TypeAccount, code?: string }): Promise<Account | undefined> {
+    return new Promise((resolve, reject) => {
+      this._nzModalService.create({
+        nzTitle: "Registrar cuenta",
+        nzContent: AccountFormModalComponent,
+        nzWidth: "700px",
+        nzData: {
+          type: options?.type,
+          code: options?.code
+        }
+      }).afterClose.subscribe(value => {
+        resolve(value);
+      })
     })
   }
 }
@@ -79,12 +89,13 @@ export class AccountList {
     })
   }
 
-  public create(data: { code: string, name: string, description?: string | null }): Promise<IAccount> {
+  public create(data: { code: string, name: string, description?: string | null }): Promise<Account> {
     return new Promise((resolve, reject) => {
       this._api.create(data).subscribe({
         next: res => {
           let account = new Account({ data: res, api: this._api, nzModalService: this._nzModalServices });
           this._list.push(account);
+          this._list.sort((a, b) => a.code.localeCompare(b.code));
           resolve(account);
         },
         error: err => reject(err)

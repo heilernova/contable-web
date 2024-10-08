@@ -1,0 +1,1 @@
+export type TypeAccount = "class" | "group" | "account" | "subaccount" | "auxiliary";
